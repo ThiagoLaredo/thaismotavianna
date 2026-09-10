@@ -1,8 +1,28 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { useState } from 'react'
 import './styles.css'
 
 function App() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  const calculateYearsOfExperience = () => {
+    const startDate = new Date(2013, 8, 1) // Setembro de 2013
+    const today = new Date()
+    let years = today.getFullYear() - startDate.getFullYear()
+    const monthDiff = today.getMonth() - startDate.getMonth()
+    
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < startDate.getDate())) {
+      years--
+    }
+    
+    return years
+  }
+
+  const handleMobileMenuItemClick = () => {
+    setMobileMenuOpen(false)
+  }
+
   return (
     <main>
       <header className="site-header">
@@ -10,22 +30,32 @@ function App() {
           <a className="brand" href="#home">
             Thais Mota Vianna
           </a>
-          <nav aria-label="Menu principal">
+          <button 
+            className="hamburger-menu" 
+            aria-label="Menu"
+            aria-expanded={mobileMenuOpen}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            <span className="hamburger-line"></span>
+            <span className="hamburger-line"></span>
+            <span className="hamburger-line"></span>
+          </button>
+          <nav aria-label="Menu principal" className={`nav-menu ${mobileMenuOpen ? 'active' : ''}`}>
             <ul className="menu-list">
               <li>
-                <a href="#home">Home</a>
+                <a href="#home" onClick={handleMobileMenuItemClick}>Home</a>
               </li>
               <li>
-                <a href="#como-fazemos">Como fazemos</a>
+                <a href="#como-fazemos" onClick={handleMobileMenuItemClick}>como fazemos</a>
               </li>
               <li>
-                <a href="#solucoes">Solucoes</a>
+                <a href="#solucoes" onClick={handleMobileMenuItemClick}>soluções</a>
               </li>
               <li>
-                <a href="#sobre">Sobre</a>
+                <a href="#sobre" onClick={handleMobileMenuItemClick}>sobre</a>
               </li>
               <li>
-                <a href="#contato">Contato</a>
+                <a href="#contato" onClick={handleMobileMenuItemClick}>contato</a>
               </li>
             </ul>
           </nav>
@@ -35,13 +65,16 @@ function App() {
       <section className="hero-section" id="home">
         <div className="container hero-grid">
           <div className="hero-content">
-            <p className="label">Estrategia de comunicacao juridica</p>
-            <h1>Estrategia de comunicacao processual, linguagem simples e experiencia do juiz</h1>
+            {/* <p className="label">Estrategia de comunicacao juridica</p> */}
+            <h1>estratégia de comunicação processual, linguagem simples e experiência do juiz</h1>
             <p className="body-lg">
-              Treinamentos e consultorias para advogados e escritorios que desejam
-              desenvolver uma comunicacao mais clara, objetiva e estrategica com o
-              judiciario.
+              Treinamentos e consultorias para advogados e escritórios que desejam
+              desenvolver uma comunicação mais clara, objetiva e estratégica com o
+              judiciário.
             </p>
+            <div className="hero-note">
+              <p><span className="hero-note-accent">✦</span> Thais Mota Vianna — mais de {calculateYearsOfExperience()} anos do lado de cá da caneta, analisando diariamente recursos, petições e manifestações das partes.</p>
+            </div>
             <div className="hero-actions">
               <a className="primary-btn" href="#contato">
                 Agendar conversa
@@ -55,50 +88,28 @@ function App() {
         <div className="container challenge-grid">
           <div className="challenge-title-column">
             <p className="label">O desafio</p>
-            <h2>O juiz consegue entender exatamente o que esta sendo pedido?</h2>
+            <h2>o juiz consegue entender exatamente o que esta sendo pedido?</h2>
           </div>
           <div className="challenge-copy-column">
+            
             <p className="body-lg challenge-copy">
-              Muitas vezes, pecas juridicas focam excessivamente em doutrina e
-              jurisprudencia, deixando os fatos e o pedido principal confusos ou perdidos em
-              meio a paragrafos longos e linguagem rebuscada. Isso aumenta o custo cognitivo
-              de quem le.
+             Muitas vezes as peças jurídicas estão mais preocupadas com teses jurídicas, citação de doutrina ou jurisprudência, quando os juízes precisam efetivamente entender o que aconteceu de fato e o que a parte pretende ao acionar o judiciário.
             </p>
             <p className="body-lg challenge-copy">
-              Juizes e assessores lidam com um volume imenso de processos. Quando a peca nao
-              e clara, o cerebro recorre a atalhos mentais, o que pode prejudicar a
-              compreensao exata do direito do seu cliente.
+             Quando uma petição é prolixa, desorganizada ou saturada de doutrina, 
+             ela impõe uma alta carga cognitiva ao julgador. 
+             Esse excesso de esforço gera resistência involuntária, cansaço e ruídos na interpretação dos fatos.</p>
+            <p className="body-lg challenge-copy">
+              Por outro lado, uma estrutura narrativa limpa, 
+              focada nos fatos essenciais e na lógica do pedido, 
+              gera o que a psicologia chama de fluência cognitiva. Quanto mais fácil é processar uma informação, mais clara, familiar e persuasiva ela se torna.
             </p>
             <p className="body-lg challenge-copy">
-              A fluencia cognitiva e essencial: quanto mais facil for processar a informacao,
-              mais favoravel e verdadeira ela parecera, de modo que o juiz sinta seguranca na
-              tomada de decisao.
+              A estratégia de comunicação não substitui o direito, 
+              mas remove a fricção da leitura, permitindo que o julgador 
+              compreenda a causa com rapidez e sinta segurança na tomada de decisão.
             </p>
           </div>
-        </div>
-      </section>
-
-      <section className="text-image-section context-section" id="contexto">
-        <div className="container context-stack">
-          <div className="context-content">
-            <p className="label">Contexto</p>
-            <h2>O judiciario esta mudando</h2>
-            <p className="body-lg">
-              O judiciario brasileiro esta passando por uma profunda transformacao
-              tecnologica, com a implementacao de inteligencia artificial e sistemas que
-              aceleram a tramitacao processual.
-            </p>
-            <p className="body-lg">
-              O Pacto Nacional do Judiciario pela Linguagem Simples reforca a necessidade de
-              uma comunicacao mais acessivel, direta e compreensivel para todos os atores do
-              sistema de justica.
-            </p>
-          </div>
-          <img
-            className="context-image"
-            src="/images/tech-no-judiciario.webp"
-            alt="Tecnologia aplicada ao judiciario"
-          />
         </div>
       </section>
 
@@ -106,7 +117,7 @@ function App() {
         <div className="container">
           <div className="services-intro">
             <p className="label">Como fazemos</p>
-            <h2>Metodologia e pilares</h2>
+            <h2>metodologia e pilares</h2>
             <span className="section-rule" aria-hidden="true" />
           </div>
           <div className="cards-grid">
@@ -114,65 +125,64 @@ function App() {
               <div className="icon-wrapper">
                 <img className="card-icon" src="/icons/estrategia.svg" alt="" />
               </div>
-              <h3>Estrategia de comunicacao processual</h3>
+              <h3>estratégia de comunicação processual aplicada à rotina real do judiciário</h3>
               <p className="body-md">Aplicada a rotina real do judiciario.</p>
             </article>
             <article className="service-card">
               <div className="icon-wrapper">
                 <img className="card-icon" src="/icons/linguagem-simples.svg" alt="" />
               </div>
-              <h3>Linguagem simples</h3>
+              <h3>linguagem simples</h3>
               <p className="body-md">
-                Redacao clara, objetiva e concisa, de facil visualizacao.
+                redação clara, objetiva e concisa, de fácil visualização
               </p>
             </article>
             <article className="service-card">
               <div className="icon-wrapper">
                 <img className="card-icon" src="/icons/organizacao.svg" alt="" />
               </div>
-              <h3>Organizacao das pecas</h3>
+              <h3>organização das peças</h3>
               <p className="body-md">
-                Introducao, desenvolvimento e conclusao, visibilidade dos pontos relevantes,
-                organizacao estetica e identificacao documental.
+                introdução, desenvolvimento e conclusão, visibilidade dos pontos relevantes,
+                organização estética e identificação documental
               </p>
             </article>
             <article className="service-card">
               <div className="icon-wrapper">
                 <img className="card-icon" src="/icons/narrativa.svg" alt="" />
               </div>
-              <h3>Narrativa dos fatos relevantes</h3>
+              <h3>narrativa dos fatos relevantes</h3>
               <p className="body-md">
-                Organizacao da informacao com foco no que efetivamente importa para o
-                julgamento.
+                organização da informação com foco no que efetivamente importa para o
+                julgamento
               </p>
             </article>
             <article className="service-card">
               <div className="icon-wrapper">
                 <img className="card-icon" src="/icons/ux-juridico.svg" alt="" />
               </div>
-              <h3>UX aplicado ao juridico</h3>
+              <h3>ux aplicado ao juridico</h3>
               <p className="body-md">
-                Consistencia, visibilidade, restricao de informacoes e facilitacao da tomada
-                de decisao.
+                consistência, visibilidade, restrição de informações e facilitação da tomada de decisão
               </p>
             </article>
             <article className="service-card">
               <div className="icon-wrapper">
                 <img className="card-icon" src="/icons/experiencia-juiz.svg" alt="" />
               </div>
-              <h3>Experiencia do juiz</h3>
+              <h3>experiencia do juiz</h3>
               <p className="body-md">
-                Comunicacao construida considerando o destinatario da informacao, o volume de
-                trabalho e a jornada de leitura processual.
+                comunicação construída considerando o destinatário da informação, o volume de
+                trabalho e a jornada de leitura processual
               </p>
             </article>
             <article className="service-card">
               <div className="icon-wrapper">
                 <img className="card-icon" src="/icons/tomada-decisao.svg" alt="" />
               </div>
-              <h3>Tomada de decisao facilitada</h3>
+              <h3>tomada de decisão facilitada</h3>
               <p className="body-md">
-                Consistencia e restricao de dados irrelevantes para gerar fluencia cognitiva.
+                consistência e restrição de dados irrelevantes para gerar fluência cognitiva
               </p>
             </article>
           </div>
@@ -183,7 +193,7 @@ function App() {
         <div className="container">
           <div className="solutions-intro">
             <p className="label">Soluções</p>
-            <h2>Vamos simplificar juntos?</h2>
+            <h2>vamos simplificar juntos?</h2>
           </div>
           <div className="solutions-grid">
             <article className="solution-card solution-card-primary">
@@ -213,7 +223,7 @@ function App() {
         <div className="container results-content">
           <div className="results-title">
             <p className="label">Resultados</p>
-            <h2>Possíveis ganhos para escritórios e advogados</h2>
+            <h2>possíveis ganhos para escritórios e advogados</h2>
           </div>
           <div className="results-items">
             <div className="result-item">
@@ -261,7 +271,7 @@ function App() {
             <p className="label">Sobre</p>
             <h2>Thais Mota Vianna</h2>
             <p className="body-md">
-              Advogada e assistente de desembargador, atua há mais de 13 anos na leitura e análise diária de
+              Advogada e assistente de desembargador, atua há mais de {calculateYearsOfExperience()} anos na leitura e análise diária de
               recursos, petições e manifestações das partes.
             </p>
             <p className="body-md">
@@ -283,24 +293,76 @@ function App() {
         </div>
       </section>
 
+      <section className="text-image-section context-section" id="contexto">
+        <div className="container context-stack">
+          <div className="context-content">
+            <p className="label">Contexto</p>
+            <h2>o judiciário está mudando</h2>
+            <p className="body-lg">
+              o pacto nacional do judiciário pela linguagem simples estabelece o 
+              compromisso de adotar linguagem simples, direta e compreensível na produção das decisões
+              judiciais e na comunicação geral com a sociedade.
+            </p>
+            <p className="body-lg">
+              a transformação tecnológica, a IA e o alto volume de informações têm acelerado a necessidade de comunicações mais claras, breves, objetivas e efetivas.
+            </p>
+          </div>
+          <img
+            className="context-image"
+            src="/images/tech-no-judiciario.webp"
+            alt="Tecnologia aplicada ao judiciario"
+          />
+        </div>
+      </section>
+
       <section className="cta-section" id="contato">
         <div className="container cta-card">
           <p className="label">Contato</p>
-          <h2>Vamos agendar uma conversa</h2>
+          <h2>vamos conversar?</h2>
           <p className="body-md">
-            Treinamentos e consultorias para desenvolver uma comunicacao processual mais
-            estrategica e compreensivel.
+            sonho com regras claras, palavras precisas e verdades na mesa
           </p>
-          <a className="primary-btn" href="mailto:contato@exemplo.com">
-            Agendar a conversa
-          </a>
+          <div className="footer-links" aria-label="Canais de contato">
+            <a className="footer-link-item" href="https://wa.me/5500000000000" aria-label="WhatsApp">
+              <span className="footer-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="img">
+                  <path d="M20.5 11.8a8.5 8.5 0 0 1-12.2 7.6L4 20.8l1.4-4.1A8.5 8.5 0 1 1 20.5 11.8Z" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M15.7 13.6c-.3-.2-1.6-.8-1.9-.8-.2 0-.4-.1-.6.2-.2.3-.7.8-.9.9-.1.1-.3.1-.6 0-.3-.2-1.2-.4-2.3-1.4-.8-.7-1.4-1.7-1.5-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.5.1-.2 0-.4 0-.6 0-.1-.6-1.5-.8-2-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.4-.2.3-.9.9-.9 2.1s.9 2.3 1 2.5c.1.2 1.8 2.8 4.4 3.8.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.6-.7 1.8-1.3.2-.6.2-1.1.2-1.2 0-.2-.2-.2-.5-.3Z" fill="currentColor" />
+                </svg>
+              </span>
+              <span className="footer-link-label">WHATSAPP</span>
+            </a>
+            <a className="footer-link-item" href="mailto:contato@exemplo.com" aria-label="Email">
+              <span className="footer-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="img">
+                  <rect x="3.5" y="5.5" width="17" height="13" rx="2" fill="none" stroke="currentColor" strokeWidth="1.7" />
+                  <path d="M4.5 7l7.5 6 7.5-6" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
+              <span className="footer-link-label">EMAIL</span>
+            </a>
+            <a className="footer-link-item" href="#" aria-label="LinkedIn">
+              <span className="footer-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="img">
+                  <rect x="4" y="4" width="16" height="16" rx="3" fill="none" stroke="currentColor" strokeWidth="1.7" />
+                  <path d="M8 10v6" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+                  <circle cx="8" cy="8" r="1" fill="currentColor" />
+                  <path d="M12 16v-3.2c0-1.3.9-2.2 2-2.2s2 .9 2 2.2V16" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
+              <span className="footer-link-label">LINKEDIN</span>
+            </a>
+            <a className="footer-link-item" href="#" aria-label="Google">
+              <span className="footer-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="img">
+                  <path d="M20 12.2c0 4.6-3.1 7.8-7.8 7.8a8 8 0 1 1 0-16c2.2 0 4 .8 5.4 2.1l-2.2 2.1c-.8-.8-1.9-1.3-3.2-1.3-2.8 0-5 2.2-5 5.1s2.2 5.1 5 5.1c2.4 0 3.9-1.4 4.2-3.3h-4.2v-2.6H20v1Z" fill="currentColor" />
+                </svg>
+              </span>
+              <span className="footer-link-label">GOOGLE</span>
+            </a>
+          </div>
         </div>
       </section>
-      <footer className="site-footer">
-        <div className="container">
-          <p className="body-md">Thais Mota Vianna</p>
-        </div>
-      </footer>
     </main>
   )
 }
