@@ -66,9 +66,6 @@ function App() {
           <nav aria-label="Menu principal" className={`nav-menu ${mobileMenuOpen ? 'active' : ''}`}>
             <ul className="menu-list">
               <li>
-                <a href="#home" onClick={handleMobileMenuItemClick}>Home</a>
-              </li>
-              <li>
                 <a href="#como-fazemos" onClick={handleMobileMenuItemClick}>como fazemos</a>
               </li>
               <li>
