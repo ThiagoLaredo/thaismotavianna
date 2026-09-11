@@ -58,6 +58,38 @@ function App() {
                 <a href="#contato" onClick={handleMobileMenuItemClick}>contato</a>
               </li>
             </ul>
+            <div className="mobile-contact-links">
+              <a className="footer-link-item" href="https://wa.me/5500000000000" aria-label="WhatsApp">
+                <span className="footer-icon" aria-hidden="true">
+                  <img src="/icons/whatsapp-icon.svg" alt="WhatsApp" style={{ width: '24px', height: '24px' }} />
+                </span>
+              </a>
+              <a className="footer-link-item" href="mailto:contato@exemplo.com" aria-label="Email">
+                <span className="footer-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" role="img">
+                    <rect x="3.5" y="5.5" width="17" height="13" rx="2" fill="none" stroke="currentColor" strokeWidth="1.7" />
+                    <path d="M4.5 7l7.5 6 7.5-6" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </span>
+              </a>
+              <a className="footer-link-item" href="#" aria-label="LinkedIn">
+                <span className="footer-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" role="img">
+                    <rect x="4" y="4" width="16" height="16" rx="3" fill="none" stroke="currentColor" strokeWidth="1.7" />
+                    <path d="M8 10v6" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+                    <circle cx="8" cy="8" r="1" fill="currentColor" />
+                    <path d="M12 16v-3.2c0-1.3.9-2.2 2-2.2s2 .9 2 2.2V16" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </span>
+              </a>
+              <a className="footer-link-item" href="#" aria-label="Google">
+                <span className="footer-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" role="img">
+                    <path d="M20 12.2c0 4.6-3.1 7.8-7.8 7.8a8 8 0 1 1 0-16c2.2 0 4 .8 5.4 2.1l-2.2 2.1c-.8-.8-1.9-1.3-3.2-1.3-2.8 0-5 2.2-5 5.1s2.2 5.1 5 5.1c2.4 0 3.9-1.4 4.2-3.3h-4.2v-2.6H20v1Z" fill="currentColor" />
+                  </svg>
+                </span>
+              </a>
+            </div>
           </nav>
         </div>
       </header>
@@ -126,7 +158,7 @@ function App() {
                 <img className="card-icon" src="/icons/estrategia.svg" alt="" />
               </div>
               <h3>estratégia de comunicação processual aplicada à rotina real do judiciário</h3>
-              <p className="body-md">Aplicada a rotina real do judiciario.</p>
+              <p className="body-md">Aplicada a rotina real do judiciário.</p>
             </article>
             <article className="service-card">
               <div className="icon-wrapper">
@@ -170,7 +202,7 @@ function App() {
               <div className="icon-wrapper">
                 <img className="card-icon" src="/icons/experiencia-juiz.svg" alt="" />
               </div>
-              <h3>experiencia do juiz</h3>
+              <h3>experiência do juiz</h3>
               <p className="body-md">
                 comunicação construída considerando o destinatário da informação, o volume de
                 trabalho e a jornada de leitura processual
@@ -325,10 +357,7 @@ function App() {
           <div className="footer-links" aria-label="Canais de contato">
             <a className="footer-link-item" href="https://wa.me/5500000000000" aria-label="WhatsApp">
               <span className="footer-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" role="img">
-                  <path d="M20.5 11.8a8.5 8.5 0 0 1-12.2 7.6L4 20.8l1.4-4.1A8.5 8.5 0 1 1 20.5 11.8Z" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M15.7 13.6c-.3-.2-1.6-.8-1.9-.8-.2 0-.4-.1-.6.2-.2.3-.7.8-.9.9-.1.1-.3.1-.6 0-.3-.2-1.2-.4-2.3-1.4-.8-.7-1.4-1.7-1.5-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.5.1-.2 0-.4 0-.6 0-.1-.6-1.5-.8-2-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.4-.2.3-.9.9-.9 2.1s.9 2.3 1 2.5c.1.2 1.8 2.8 4.4 3.8.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.6-.7 1.8-1.3.2-.6.2-1.1.2-1.2 0-.2-.2-.2-.5-.3Z" fill="currentColor" />
-                </svg>
+                <img src="/icons/whatsapp-icon.svg" alt="WhatsApp" style={{ width: '24px', height: '24px' }} />
               </span>
               <span className="footer-link-label">WHATSAPP</span>
             </a>
