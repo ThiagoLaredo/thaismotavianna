@@ -696,6 +696,8 @@ h3 {
 .about-text .body-md {
   margin: 0;
   max-width: 65ch;
+  font-size: 18px;
+  line-height: 28px;
 }
 
 .about-text .body-md + .body-md {
@@ -1018,6 +1020,14 @@ h3 {
     width: 280px;
     height: 280px;
     margin: 0 auto;
+  }
+
+  .cta-card {
+    padding: calc(5 * var(--space-unit));
+  }
+
+  .cta-card .footer-links {
+    margin-top: calc(3 * var(--space-unit));
   }
 
   .context-stack {
