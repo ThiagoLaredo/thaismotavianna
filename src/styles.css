@@ -357,7 +357,7 @@ body {
 
 .context-section {
   text-align: center;
-  background: #fbf9f7;
+  background: #e8eee8;
 }
 
 .context-stack {
@@ -582,7 +582,8 @@ h3 {
 }
 
 .solutions-section {
-  background: #fbf9f7;
+  background: #f3f6ef;
+  padding-top: var(--section-padding-desktop);
   padding-bottom: var(--section-padding-desktop);
 }
 
@@ -647,7 +648,7 @@ h3 {
 }
 
 .about-section {
-  background: #ebe6e0;
+  background: #f7f3ee;
   padding: var(--section-padding-desktop) 0;
 }
 
@@ -656,10 +657,11 @@ h3 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: calc(6 * var(--space-unit));
   align-items: center;
+  justify-content: center;
 }
 
 .about-image {
-  width: min(100%, 480px);
+  width: min(100%, 420px);
   aspect-ratio: 1 / 1;
   justify-self: center;
   border-radius: 50%;
