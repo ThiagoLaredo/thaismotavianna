@@ -882,7 +882,7 @@ h3 {
 
 .cta-section {
   background: var(--primary);
-  padding: calc(6 * var(--space-unit)) 0;
+  padding: var(--section-padding-desktop) 0;
 }
 
 .cta-section .label,
@@ -964,16 +964,13 @@ h3 {
 
   .hero-section,
   .services-section,
+  .solutions-section,
   .cta-section,
   .text-section,
   .text-image-section,
   .results-section,
   .about-section {
     padding: var(--section-padding-mobile) 0;
-  }
-
-  .cta-section {
-    padding: calc(5 * var(--space-unit)) 0;
   }
 
   .menu-list {
@@ -1060,8 +1057,9 @@ h3 {
   }
 
   h1 {
-    font-size: 36px;
-    line-height: 44px;
+    font-size: 34px;
+    line-height: 42px;
+    max-width: none;
   }
 
   h2 {
