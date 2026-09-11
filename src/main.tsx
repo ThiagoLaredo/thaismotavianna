@@ -389,7 +389,7 @@ function App() {
                   <path d="M4.5 7l7.5 6 7.5-6" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </span>
-              <span className="footer-link-label">EMAIL</span>
+              <span className="footer-link-label">E-MAIL</span>
             </a>
             <a className="footer-link-item" href="#" aria-label="LinkedIn">
               <span className="footer-icon" aria-hidden="true">
