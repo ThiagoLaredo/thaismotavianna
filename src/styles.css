@@ -60,6 +60,23 @@ html {
   box-sizing: border-box;
 }
 
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(16px);
+  filter: blur(1.5px);
+  transition:
+    opacity 560ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 560ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 560ms ease;
+  will-change: opacity, transform, filter;
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
 html,
 body,
 #root {
@@ -362,16 +379,18 @@ body {
 
 .context-stack {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: calc(var(--gutter) * 2);
-  align-items: center;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  gap: calc(3 * var(--space-unit));
+  text-align: center;
 }
 
 .context-content {
   width: 100%;
+  max-width: 72ch;
   display: grid;
   gap: calc(2 * var(--space-unit));
-  text-align: left;
+  text-align: center;
 }
 
 .context-image {
@@ -752,6 +771,30 @@ h3 {
   gap: var(--gutter);
 }
 
+.cards-grid .service-card:nth-child(2) {
+  transition-delay: 50ms;
+}
+
+.cards-grid .service-card:nth-child(3) {
+  transition-delay: 100ms;
+}
+
+.cards-grid .service-card:nth-child(4) {
+  transition-delay: 150ms;
+}
+
+.cards-grid .service-card:nth-child(5) {
+  transition-delay: 200ms;
+}
+
+.cards-grid .service-card:nth-child(6) {
+  transition-delay: 250ms;
+}
+
+.cards-grid .service-card:nth-child(7) {
+  transition-delay: 300ms;
+}
+
 .service-card {
   background: #ffffff;
   border: 1px solid var(--linen);
@@ -780,6 +823,38 @@ h3 {
 
 .service-card:last-child {
   grid-column: 2;
+}
+
+.solutions-grid .solution-card:nth-child(2) {
+  transition-delay: 80ms;
+}
+
+.results-items .result-item:nth-child(2) {
+  transition-delay: 40ms;
+}
+
+.results-items .result-item:nth-child(3) {
+  transition-delay: 80ms;
+}
+
+.results-items .result-item:nth-child(4) {
+  transition-delay: 120ms;
+}
+
+.results-items .result-item:nth-child(5) {
+  transition-delay: 160ms;
+}
+
+.results-items .result-item:nth-child(6) {
+  transition-delay: 200ms;
+}
+
+.results-items .result-item:nth-child(7) {
+  transition-delay: 240ms;
+}
+
+.results-items .result-item:nth-child(8) {
+  transition-delay: 280ms;
 }
 
 .chip {
@@ -987,5 +1062,19 @@ h3 {
   h2 {
     font-size: 32px;
     line-height: 40px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+    will-change: auto;
   }
 }

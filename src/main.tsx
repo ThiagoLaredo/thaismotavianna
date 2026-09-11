@@ -1,10 +1,33 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './styles.css'
 
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  useEffect(() => {
+    const revealItems = document.querySelectorAll('[data-reveal]')
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible')
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      {
+        threshold: 0.18,
+        rootMargin: '0px 0px -8% 0px',
+      },
+    )
+
+    revealItems.forEach((item) => observer.observe(item))
+
+    return () => observer.disconnect()
+  }, [])
 
   const calculateYearsOfExperience = () => {
     const startDate = new Date(2013, 8, 1) // Setembro de 2013
@@ -96,7 +119,7 @@ function App() {
 
       <section className="hero-section" id="home">
         <div className="container hero-grid">
-          <div className="hero-content">
+          <div className="hero-content" data-reveal>
             {/* <p className="label">Estrategia de comunicacao juridica</p> */}
             <h1>estratégia de comunicação processual, linguagem simples e experiência do juiz</h1>
             <p className="body-lg">
@@ -118,11 +141,11 @@ function App() {
 
       <section className="text-section challenge-section" id="desafio">
         <div className="container challenge-grid">
-          <div className="challenge-title-column">
+          <div className="challenge-title-column" data-reveal>
             <p className="label">O desafio</p>
             <h2>o juiz consegue entender exatamente o que esta sendo pedido?</h2>
           </div>
-          <div className="challenge-copy-column">
+          <div className="challenge-copy-column" data-reveal>
             
             <p className="body-lg challenge-copy">
              Muitas vezes as peças jurídicas estão mais preocupadas com teses jurídicas, citação de doutrina ou jurisprudência, quando os juízes precisam efetivamente entender o que aconteceu de fato e o que a parte pretende ao acionar o judiciário.
@@ -147,20 +170,19 @@ function App() {
 
       <section className="services-section" id="como-fazemos">
         <div className="container">
-          <div className="services-intro">
+          <div className="services-intro" data-reveal>
             <p className="label">Como fazemos</p>
             <h2>metodologia e pilares</h2>
-            <span className="section-rule" aria-hidden="true" />
           </div>
           <div className="cards-grid">
-            <article className="service-card">
+            <article className="service-card" data-reveal>
               <div className="icon-wrapper">
                 <img className="card-icon" src="/icons/estrategia.svg" alt="" />
               </div>
               <h3>estratégia de comunicação processual aplicada à rotina real do judiciário</h3>
               <p className="body-md">Aplicada a rotina real do judiciário.</p>
             </article>
-            <article className="service-card">
+            <article className="service-card" data-reveal>
               <div className="icon-wrapper">
                 <img className="card-icon" src="/icons/linguagem-simples.svg" alt="" />
               </div>
@@ -169,7 +191,7 @@ function App() {
                 redação clara, objetiva e concisa, de fácil visualização
               </p>
             </article>
-            <article className="service-card">
+            <article className="service-card" data-reveal>
               <div className="icon-wrapper">
                 <img className="card-icon" src="/icons/organizacao.svg" alt="" />
               </div>
@@ -179,7 +201,7 @@ function App() {
                 organização estética e identificação documental
               </p>
             </article>
-            <article className="service-card">
+            <article className="service-card" data-reveal>
               <div className="icon-wrapper">
                 <img className="card-icon" src="/icons/narrativa.svg" alt="" />
               </div>
@@ -189,7 +211,7 @@ function App() {
                 julgamento
               </p>
             </article>
-            <article className="service-card">
+            <article className="service-card" data-reveal>
               <div className="icon-wrapper">
                 <img className="card-icon" src="/icons/ux-juridico.svg" alt="" />
               </div>
@@ -198,7 +220,7 @@ function App() {
                 consistência, visibilidade, restrição de informações e facilitação da tomada de decisão
               </p>
             </article>
-            <article className="service-card">
+            <article className="service-card" data-reveal>
               <div className="icon-wrapper">
                 <img className="card-icon" src="/icons/experiencia-juiz.svg" alt="" />
               </div>
@@ -208,7 +230,7 @@ function App() {
                 trabalho e a jornada de leitura processual
               </p>
             </article>
-            <article className="service-card">
+            <article className="service-card" data-reveal>
               <div className="icon-wrapper">
                 <img className="card-icon" src="/icons/tomada-decisao.svg" alt="" />
               </div>
@@ -223,12 +245,12 @@ function App() {
 
       <section className="solutions-section" id="solucoes">
         <div className="container">
-          <div className="solutions-intro">
+          <div className="solutions-intro" data-reveal>
             <p className="label">Soluções</p>
             <h2>vamos simplificar juntos?</h2>
           </div>
           <div className="solutions-grid">
-            <article className="solution-card solution-card-primary">
+            <article className="solution-card solution-card-primary" data-reveal>
               <p className="chip">Para Equipes</p>
               <h3>Treinamento para escritórios</h3>
               <p className="body-md">
@@ -237,7 +259,7 @@ function App() {
               </p>
               <a href="#" className="learn-more">Saiba mais</a>
             </article>
-            <article className="solution-card solution-card-secondary">
+            <article className="solution-card solution-card-secondary" data-reveal>
               <p className="chip">One-on-One</p>
               <h3>Consultoria individual para advogados</h3>
               <p className="body-md">
@@ -253,40 +275,40 @@ function App() {
 
       <section className="results-section" id="resultados">
         <div className="container results-content">
-          <div className="results-title">
+          <div className="results-title" data-reveal>
             <p className="label">Resultados</p>
             <h2>possíveis ganhos para escritórios e advogados</h2>
           </div>
           <div className="results-items">
-            <div className="result-item">
+            <div className="result-item" data-reveal>
               <span className="result-number">1</span>
               <p className="body-md">Melhoria na qualidade técnica da redação</p>
             </div>
-            <div className="result-item">
+            <div className="result-item" data-reveal>
               <span className="result-number">2</span>
               <p className="body-md">Comunicação mais acessível ao juiz</p>
             </div>
-            <div className="result-item">
+            <div className="result-item" data-reveal>
               <span className="result-number">3</span>
               <p className="body-md">Aumento da clareza e objetividade das peças</p>
             </div>
-            <div className="result-item">
+            <div className="result-item" data-reveal>
               <span className="result-number">4</span>
               <p className="body-md">Melhor organização da argumentação</p>
             </div>
-            <div className="result-item">
+            <div className="result-item" data-reveal>
               <span className="result-number">5</span>
               <p className="body-md">Redução de ruídos na leitura processual</p>
             </div>
-            <div className="result-item">
+            <div className="result-item" data-reveal>
               <span className="result-number">6</span>
               <p className="body-md">Fortalecimento da comunicação com clientes</p>
             </div>
-            <div className="result-item">
+            <div className="result-item" data-reveal>
               <span className="result-number">7</span>
               <p className="body-md">Adaptação às novas diretrizes de linguagem simples</p>
             </div>
-            <div className="result-item">
+            <div className="result-item" data-reveal>
               <span className="result-number">8</span>
               <p className="body-md">Desenvolvimento de uma comunicação jurídica mais limpa e clara</p>
             </div>
@@ -296,10 +318,10 @@ function App() {
 
       <section className="about-section" id="sobre">
         <div className="container about-content">
-          <div className="about-image">
+          <div className="about-image" data-reveal>
             <img src="/images/Thais-Mota-Vianna.webp" alt="Thais Mota Vianna" />
           </div>
-          <div className="about-text">
+          <div className="about-text" data-reveal>
             <p className="label">Sobre</p>
             <h2>Thais Mota Vianna</h2>
             <p className="body-md">
@@ -327,7 +349,7 @@ function App() {
 
       <section className="text-image-section context-section" id="contexto">
         <div className="container context-stack">
-          <div className="context-content">
+          <div className="context-content" data-reveal>
             <p className="label">Contexto</p>
             <h2>o judiciário está mudando</h2>
             <p className="body-lg">
@@ -339,16 +361,18 @@ function App() {
               a transformação tecnológica, a IA e o alto volume de informações têm acelerado a necessidade de comunicações mais claras, breves, objetivas e efetivas.
             </p>
           </div>
+          {/*
           <img
             className="context-image"
             src="/images/tech-no-judiciario.webp"
             alt="Tecnologia aplicada ao judiciario"
           />
+          */}
         </div>
       </section>
 
       <section className="cta-section" id="contato">
-        <div className="container cta-card">
+        <div className="container cta-card" data-reveal>
           <p className="label">Contato</p>
           <h2>vamos conversar?</h2>
           <p className="body-md">
