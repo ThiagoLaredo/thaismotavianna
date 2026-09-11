@@ -99,18 +99,6 @@ body {
   margin: 0 auto;
 }
 
-.hero-grid,
-.challenge-grid,
-.split-layout,
-.section-head,
-.cards-grid,
-.inner-content,
-.cta-card {
-  width: 100%;
-  margin-left: 0;
-  margin-right: 0;
-}
-
 .site-header {
   position: sticky;
   top: 0;
@@ -1008,13 +996,25 @@ h3 {
     grid-template-columns: 1fr;
   }
 
+  .challenge-grid {
+    gap: calc(4 * var(--space-unit));
+  }
+
+  .solutions-intro {
+    justify-items: center;
+  }
+
+  .solutions-intro .label {
+    text-align: center;
+  }
+
   .results-items {
     grid-template-columns: 1fr;
   }
 
   .about-image {
-    width: 240px;
-    height: 240px;
+    width: 280px;
+    height: 280px;
     margin: 0 auto;
   }
 
@@ -1041,6 +1041,11 @@ h3 {
     grid-template-columns: 1fr;
   }
 
+  .service-card h3 {
+    font-size: 26px;
+    line-height: 34px;
+  }
+
   .service-card:last-child {
     grid-column: auto;
   }
@@ -1055,8 +1060,8 @@ h3 {
   }
 
   h1 {
-    font-size: 32px;
-    line-height: 40px;
+    font-size: 36px;
+    line-height: 44px;
   }
 
   h2 {
